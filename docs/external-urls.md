@@ -139,6 +139,16 @@ whether they are configurable via environment variables or hardcoded.
 
 ---
 
+### Community Node Search (Frontend)
+
+| URL | فایل | زمان فراخوانی |
+|-----|------|--------------|
+| `https://api.npms.io/v2/` | [packages/@n8n/constants/src/community-nodes.ts:1](../packages/@n8n/constants/src/community-nodes.ts) → [packages/frontend/@n8n/rest-api-client/src/api/communityNodes.ts:42](../packages/frontend/@n8n/rest-api-client/src/api/communityNodes.ts) | جستجوی تعداد community packages موجود در npm — فراخوانی مستقیم از **مرورگر کاربر** |
+
+> این درخواست از frontend (مرورگر) ارسال می‌شود، نه از backend. hardcoded است و env variable ای برای override ندارد.
+
+---
+
 ### Telemetry (hardcoded بخش)
 
 | URL | فایل | زمان فراخوانی |
@@ -202,6 +212,7 @@ Enterprise trial registration     ❌          hardcoded: enterprise.n8n.io
 Community edition registration    ❌          hardcoded: enterprise.n8n.io
 Community package metadata        ❌          hardcoded: api.n8n.io/api/package
 Community node verification       ❌          hardcoded: api.n8n.io/api/community-nodes
+Community node search (frontend)  ❌          hardcoded: api.npms.io/v2 (مرورگر کاربر)
 Telemetry config (backend)        ❌          hardcoded: api-rs.n8n.io/sourceConfig
 Telemetry script (frontend)       ❌          hardcoded: cdn-rs.n8n.io/v1/ra.min.js
 Subscription UI link              ❌          hardcoded: subscription.n8n.io (لینک فقط)

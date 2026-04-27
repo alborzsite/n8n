@@ -2,7 +2,6 @@ import { Logger } from '@n8n/backend-common';
 import { LICENSE_FEATURES } from '@n8n/constants';
 import { OnPubSubEvent } from '@n8n/decorators';
 import { Service } from '@n8n/di';
-import axios from 'axios';
 import type { PackageDirectoryLoader } from 'n8n-core';
 import { InstanceSettings } from 'n8n-core';
 import {
@@ -189,21 +188,7 @@ export class CommunityPackagesService {
 		return packages;
 	}
 
-	async checkNpmPackageStatus(packageName: string) {
-		const N8N_BACKEND_SERVICE_URL = 'https://api.n8n.io/api/package';
-
-		try {
-			const response = await axios.post<CommunityPackages.PackageStatusCheck>(
-				N8N_BACKEND_SERVICE_URL,
-				{ name: packageName },
-				{ method: 'POST' },
-			);
-
-			if (response.data.status !== NPM_PACKAGE_STATUS_GOOD) return response.data;
-		} catch {
-			// service unreachable, do nothing
-		}
-
+	async checkNpmPackageStatus(_packageName: string) {
 		return { status: NPM_PACKAGE_STATUS_GOOD };
 	}
 
